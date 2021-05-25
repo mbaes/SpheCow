@@ -1,0 +1,4 @@
+*.ipynb linguist-detectable=false
+*.txt linguist-detectable=false
+*.jpg linguist-detectable=false
+
