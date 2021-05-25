@@ -5,7 +5,8 @@ Flexible dynamical models for galaxies and dark matter haloes
 
 SpheCow is a light-weight and flexible code that allows to easily explore the structure and dynamics of any spherical model for galaxies and dark matter haloes. The code can automatically calculate the dynamical properties, assuming an isotropic or Osipkov-Merritt anisotropic orbital structure, of any model with either an analytical density profile or an analytical surface density profile as starting point. SpheCow contains readily usable implementations for many standard models, including the Plummer, Hernquist, NFW, Einasto, Sérsic and Nuker models. The code is publicly available as a set of C++ routines and as a Python module, and is designed to be easily extendable, in the sense that new models can be added in a straightforward way. 
 
-SpheCow has been developed by Maarten Baes, Peter Camps and Bert Vandenbroucke at the Sterrenkundig Observatorium, Universiteit Gent. 
+SpheCow has been developed by Maarten Baes, Peter Camps and Bert Vandenbroucke at the Sterrenkundig Observatorium, Universiteit Gent. It is available for use under the terms of the AGPL license (see the file LICENSE.txt in
+this repository).
 
 For a more complete description of SpheCow, we refer to the paper
 
