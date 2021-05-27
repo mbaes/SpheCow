@@ -7,6 +7,7 @@
 #include "SpheCow.hpp"
 
 #include "BPLModel.hpp"
+#include "BurkertModel.hpp"
 #include "DeVaucouleursModel.hpp"
 #include "EinastoModel.hpp"
 #include "GammaModel.hpp"

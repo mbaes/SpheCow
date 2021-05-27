@@ -5,6 +5,7 @@
 ///////////////////////////////////////////////////////////////// */
 
 #include "BPLModel.hpp"
+#include "BurkertModel.hpp"
 #include "DeVaucouleursModel.hpp"
 #include "EinastoModel.hpp"
 #include "GammaModel.hpp"
@@ -151,6 +152,9 @@ static PyObject *run_model(PyObject *self, PyObject *args, PyObject *kwargs)
                                getDictElement(modelParameters, "rb"),
                                getDictElement(modelParameters, "beta"),
                                getDictElement(modelParameters, "gamma"), gl);
+        else if (modelName == "BurkertModel")
+            model = new BurkertModel(getDictElement(modelParameters, "rhos"),
+                                     getDictElement(modelParameters, "rs"), gl);
         else if (modelName == "DeVaucouleursModel")
             model = new DeVaucouleursModel(getDictElement(modelParameters, "Mtot"),
                                          getDictElement(modelParameters, "Reff"), gl);
