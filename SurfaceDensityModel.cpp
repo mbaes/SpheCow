@@ -89,3 +89,14 @@ double SurfaceDensityModel::potential(double r) const
 }
 
 //////////////////////////////////////////////////////////////////////
+
+double SurfaceDensityModel::central_potential() const
+{
+    std::function<double(double)> integrand = [&](double u) -> double
+    {
+        return derivative_surface_density(u) * u;
+    };
+    return -4.0 * _gl->integrate_0_infty(integrand,scale_radius());
+}
+
+//////////////////////////////////////////////////////////////////////

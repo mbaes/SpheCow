@@ -74,6 +74,13 @@ double IsochroneModel::mass(double r) const
 
 //////////////////////////////////////////////////////////////////////
 
+double IsochroneModel::total_mass() const
+{
+    return _Mtot;
+}
+
+//////////////////////////////////////////////////////////////////////
+
 double IsochroneModel::potential(double r) const
 {
     double dimf = _Mtot/_b;
@@ -81,6 +88,13 @@ double IsochroneModel::potential(double r) const
     double t2 = t*t;
     double u = sqrt(1.0+t2);
     return dimf / (1.0+u);
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double IsochroneModel::central_potential() const
+{
+    return 0.5 * _Mtot/_b;
 }
 
 //////////////////////////////////////////////////////////////////////

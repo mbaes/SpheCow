@@ -86,3 +86,22 @@ double NukerModel::third_derivative_surface_density(double R) const
 }
 
 //////////////////////////////////////////////////////////////////////
+
+double NukerModel::total_mass() const
+{
+    return _Mtot;
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double NukerModel::central_potential() const
+{
+    double lg1 = lgamma((_beta-1.0)/_alpha);
+    double lg2 = lgamma((1.0-_gamma)/_alpha);
+    double lg3 = lgamma((_beta-2.0)/_alpha);
+    double lg4 = lgamma((2.0-_gamma)/_alpha);
+    double f = exp(lg1+lg2-lg3-lg4);
+    return _Mtot/_Rb * (2.0/M_PI) * f;
+}
+
+//////////////////////////////////////////////////////////////////////

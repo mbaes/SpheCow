@@ -10,17 +10,6 @@
 
 //////////////////////////////////////////////////////////////////////
 
-double DensityModel::total_mass() const
-{
-    std::function<double(double)> integrand = [&](double u) -> double
-    {
-        return density(u) * (u*u);
-    };
-    return 4.0*M_PI*_gl->integrate_0_infty(integrand,scale_radius());
-}
-
-//////////////////////////////////////////////////////////////////////
-
 double DensityModel::mass(double r) const
 {
     std::function<double(double)> integrand = [&](double u) -> double
@@ -32,6 +21,17 @@ double DensityModel::mass(double r) const
 
 //////////////////////////////////////////////////////////////////////
 
+double DensityModel::total_mass() const
+{
+    std::function<double(double)> integrand = [&](double u) -> double
+    {
+        return density(u) * (u*u);
+    };
+    return 4.0*M_PI*_gl->integrate_0_infty(integrand,scale_radius());
+}
+
+//////////////////////////////////////////////////////////////////////
+
 double DensityModel::potential(double r) const
 {
     std::function<double(double)> integrand = [&](double u) -> double
@@ -39,6 +39,17 @@ double DensityModel::potential(double r) const
         return density(u) * u;
     };
     return mass(r)/r + 4.0*M_PI*_gl->integrate_r_infty(integrand,r,scale_radius());
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double DensityModel::central_potential() const
+{
+    std::function<double(double)> integrand = [&](double u) -> double
+    {
+        return density(u) * u;
+    };
+    return 4.0*M_PI*_gl->integrate_0_infty(integrand,scale_radius());
 }
 
 //////////////////////////////////////////////////////////////////////

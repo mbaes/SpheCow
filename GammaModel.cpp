@@ -58,6 +58,13 @@ double GammaModel::mass(double r) const
 
 //////////////////////////////////////////////////////////////////////
 
+double GammaModel::total_mass() const
+{
+    return _Mtot;
+}
+
+//////////////////////////////////////////////////////////////////////
+
 double GammaModel::potential(double r) const
 {
     double dimf = _Mtot/_b;
@@ -68,6 +75,16 @@ double GammaModel::potential(double r) const
     double w = 2.0-_gamma;
     double q = log(t/(1.0+t));
     return dimf * (-q - 0.5*w*q*q - w*w/6.0*q*q*q);
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double GammaModel::central_potential() const
+{
+    if (_gamma>=2.0)
+        return std::numeric_limits<double>::infinity();
+    else
+        return (_Mtot/_b) / (2.0-_gamma);
 }
 
 //////////////////////////////////////////////////////////////////////
