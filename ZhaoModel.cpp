@@ -69,3 +69,26 @@ double ZhaoModel::second_derivative_density(double r) const
 }
 
 //////////////////////////////////////////////////////////////////////
+
+double ZhaoModel::total_mass() const
+{
+    return _Mtot;
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double ZhaoModel::central_potential() const
+{
+    if (_gamma>=2.0)
+        return std::numeric_limits<double>::infinity();
+    else
+    {
+        double lg1 = lgamma((_beta-2.0)/_alpha);
+        double lg2 = lgamma((2.0-_gamma)/_alpha);
+        double lg3 = lgamma((_beta-3.0)/_alpha);
+        double lg4 = lgamma((3.0-_gamma)/_alpha);
+        return _Mtot/_rb * exp(lg1+lg2-lg3-lg4);
+    }
+}
+
+//////////////////////////////////////////////////////////////////////

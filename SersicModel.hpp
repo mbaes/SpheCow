@@ -35,6 +35,12 @@ public:
     /** This function returns the third derivative of the surface density \f$\Sigma'''(R)\f$ of the Sérsic model at projected radius \f$R\f$. */
     double third_derivative_surface_density(double R) const;
     
+    /** This function returns the total mass \f$M_{\text{tot}}\f$ of the Sérsic model. */
+    double total_mass() const;
+
+    /** This function returns the central potential \f$\Psi_0\f$ of the Sérsic model. */
+    double central_potential() const;
+
 private:
     
     /** The total mass \f$M_{\text{tot}}\f$. */

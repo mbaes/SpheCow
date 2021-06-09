@@ -50,10 +50,16 @@ public:
     
     /** This pure virtual function returns the potential \f$\Psi(r)\f$ at radius \f$r\f$. */
     virtual double potential(double r) const = 0;
-    
+
+    /** This pure virtual function returns the central value of the potential \f$\Psi_0\f$. */
+    virtual double central_potential() const = 0;
+
     /** This function returns the potential difference \f$\Psi(r_1)-\Psi(r_2)\f$ corresponding to two radii \f$r_1\f$ and \f$r_2\f$, with \f$r_2>r_1\f$. If these two radii are sufficiently apart, i.e., if \f$\epsilon \equiv r_2-r_1 > 10^{-4}\,r_{\text{s}}\f$, with \f$r_{\text{s}}\f$ the model scale radius, the routine directly uses the difference of the potential evaluated at the two radii. If \f$\epsilon \leq 10^{-4}\,r_{\text{s}}\f$, it uses the first terms in the Taylor expansion, \f[ \Psi(r_1)-\Psi(r_2) = -\left[\Psi(r_1+\epsilon)-\Psi(r_1)\right] \approx \frac{GM(r_1)}{r_1^2}\,\epsilon + \left[2\pi G\,\rho(r_1)-\frac{GM(r_1)}{r_1^3}\right] \epsilon^2.\f] */
     double potential_difference(double r1, double r2) const;
 
+    /** This function returns the maximum radius \f$r_{\text{max}}({\cal{E}})\f$ that can be reached by a particle with binding energy per unit mass \f${\cal{E}}\f$.  It is calculated by solving the equation \f$\Psi(r_{\text{max}}({\cal{E}})) = {\cal{E}})\f$. In the general case, this equation is solved using Newton's method. This function is a virtual function that can be reimplemented by derived classes. */
+    virtual double rmax(double E) const;
+    
     /** This pure virtual function returns the surface density \f$\Sigma(R)\f$ at projected radius \f$R\f$. */
     virtual double surface_density(double R) const = 0;
 

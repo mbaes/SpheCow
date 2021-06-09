@@ -66,11 +66,25 @@ double NFWModel::mass(double r) const
 
 //////////////////////////////////////////////////////////////////////
 
+double NFWModel::total_mass() const
+{
+    return std::numeric_limits<double>::infinity();
+}
+
+//////////////////////////////////////////////////////////////////////
+
 double NFWModel::potential(double r) const
 {
     double dimf = _Mvir/_rs;
     double t = r/_rs;
     return dimf * _rhoff * 4.0*M_PI * log(1.0+t)/t;
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double NFWModel::central_potential() const
+{
+    return _Mvir/_rs * _rhoff * 4.0*M_PI;
 }
 
 //////////////////////////////////////////////////////////////////////

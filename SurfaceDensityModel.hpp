@@ -38,11 +38,14 @@ public:
     /** This function returns the mass \f$M(r)\f$ at radius \f$r\f$. It is calculated as \f[ M(r) = -\pi \left[ \int_0^r \Sigma'(u)\,u^2\, {\text{d}} u + \int_r^\infty \Sigma'(u)\,w_-(u,r)\, {\text{d}} u \right],\f] with \f[ w_-(u,r) = \frac{2}{\pi}\left[u^2\arctan\left(\frac{r}{\sqrt{u^2-r^2}}\right)-r\sqrt{u^2-r^2}\right]. \f] The integration is performed using Gauss-Legendre quadrature. */
     double mass(double r) const;
     
-    /** This function returns the total mass \f$M_{\text{tot}}\f$. It is calculated as \f[ M_{\text{tot}} = 2\pi \int_0^\infty \Sigma(u)\, u\, {\text{d}} u. \f] The integration is performed using Gauss-Legendre quadrature.  */
-    double total_mass() const;
+    /** This function returns the total mass \f$M_{\text{tot}}\f$. It is calculated as \f[ M_{\text{tot}} = 2\pi \int_0^\infty \Sigma(u)\, u\, {\text{d}} u. \f] The integration is performed using Gauss-Legendre quadrature.  This function is a virtual function that can be reimplemented by derived classes. */
+    virtual double total_mass() const;
     
     /** This function returns the potential \f$\Psi(r)\f$ at radius \f$r\f$. It is calculated as \f[ \Psi(r) = -\frac{\pi\,G}{r} \left[ \int_0^r \Sigma'(u)\,u^2\, {\text{d}} u + \int_r^\infty \Sigma'(u)\,w_+(u,r)\,{\text{d}} u \right], \f] with \f[ w_+(u,r) = \frac{2}{\pi}\left[u^2\arctan\left(\frac{r}{\sqrt{u^2-r^2}}\right)+r\sqrt{u^2-r^2}\right]. \f] The integration is performed using Gauss-Legendre quadrature. */
     double potential(double r) const;
+
+    /** This function returns the central potential \f$\Psi_0\f$. It is calculated as \f[ \Psi_0 = -4\,G \int_0^\infty \Sigma'(u)\,u\,{\text{d}} u \right]. \f] The integration is performed using Gauss-Legendre quadrature. This function is a virtual function that can be reimplemented by derived classes. */
+    virtual double central_potential() const;
 };
 
 //////////////////////////////////////////////////////////////////////

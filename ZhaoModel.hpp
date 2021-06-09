@@ -32,6 +32,12 @@ public:
     /** This function returns the second derivative of the density \f$\rho''(r)\f$ of the Zhao model at radius \f$r\f$. */
     double second_derivative_density(double r) const;
 
+    /** This function returns the total mass \f$M_{\text{tot}}\f$ of the Zhao model. */
+    double total_mass() const;
+
+    /** This function returns the central potential \f$\Psi_0\f$ of the Zhao model. */
+    double central_potential() const;
+
 private:
 
     /** The total mass \f$M_{\text{tot}}\f$. */

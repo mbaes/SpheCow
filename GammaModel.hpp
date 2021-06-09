@@ -35,9 +35,15 @@ public:
     /** This function returns the mass \f$M(r)\f$ of the \f$\gamma\f$-model at radius \f$r\f$. */
     double mass(double r) const;
     
+    /** This function returns the total mass \f$M_{\text{tot}}\f$ of the \f$\gamma\f$-model. */
+    double total_mass() const;
+
     /** This function returns the potential \f$\Psi(r)\f$ of the \f$\gamma\f$-model at radius \f$r\f$. */
     double potential(double r) const;
     
+    /** This function returns the central potential \f$\Psi_0\f$ of the \f$\gamma\f$-model. */
+    double central_potential() const;
+
 private:
     
     /** The total mass \f$M_{\text{tot}}\f$. */

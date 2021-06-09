@@ -74,6 +74,13 @@ double BPLModel::mass(double r) const
 
 //////////////////////////////////////////////////////////////////////
 
+double BPLModel::total_mass() const
+{
+    return _Mtot;
+}
+
+//////////////////////////////////////////////////////////////////////
+
 double BPLModel::potential(double r) const
 {
     double dimf = _Mtot/_rb;
@@ -92,6 +99,16 @@ double BPLModel::potential(double r) const
         else
             return dimf * _rhoff * (4.0*M_PI) / (_beta-3.0) / t * ((_beta-_gamma)/(3.0-_gamma)-pow(t,3.0-_beta)/(_beta-2.0));
     }
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double BPLModel::central_potential() const
+{
+    if (_gamma>=2.0)
+        return std::numeric_limits<double>::infinity();
+    else
+        return (_Mtot/_rb) * _rhoff * (4.0*M_PI) * (_beta-_gamma) / ((2.0-_gamma)*(_beta-2.0));
 }
 
 //////////////////////////////////////////////////////////////////////

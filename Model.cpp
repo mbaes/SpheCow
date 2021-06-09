@@ -46,6 +46,32 @@ double Model::potential_difference(double r1, double r2) const
 
 //////////////////////////////////////////////////////////////////////
 
+double Model::rmax(double E) const
+{
+    double Psi0 = central_potential();
+    if (E>=Psi0) return 0;
+    int jmax = 200;
+    double eps = 1e-8;
+    double r = scale_radius();
+    double lnr = log(r);
+    double f = potential(r) - E;
+    double df = -mass(r)/r;
+    double h = f/df;
+    int j = 0;
+    while (abs(h)>eps && j<jmax)
+    {
+        lnr -= h;
+        r = exp(lnr);
+        f = potential(r) - E;
+        df = -mass(r)/r;
+        h = f/df;
+        j++;
+    }
+    return exp(lnr);
+}
+
+//////////////////////////////////////////////////////////////////////
+
 double Model::surface_density_slope(double R) const
 {
     return -R * derivative_surface_density(R) / surface_density(R);

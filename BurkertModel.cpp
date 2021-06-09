@@ -67,6 +67,13 @@ double BurkertModel::mass(double r) const
 
 //////////////////////////////////////////////////////////////////////
 
+double BurkertModel::total_mass() const
+{
+    return std::numeric_limits<double>::infinity();
+}
+
+//////////////////////////////////////////////////////////////////////
+
 double BurkertModel::potential(double r) const
 {
     double dimf = _rhos*(_rs*_rs);
@@ -75,6 +82,13 @@ double BurkertModel::potential(double r) const
     double u = (1.0+t)/t;
     double v = (1.0-t)/t;
     return dimf * M_PI * (M_PI - 2.0*u*atan(t) + 2.0*u*log(1.0+t) + v*log(1.0+t2));
+}
+
+//////////////////////////////////////////////////////////////////////
+
+double BurkertModel::central_potential() const
+{
+    return _rhos * (_rs*_rs) * (M_PI*M_PI);
 }
 
 //////////////////////////////////////////////////////////////////////
