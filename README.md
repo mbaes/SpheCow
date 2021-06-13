@@ -11,7 +11,8 @@ this repository).
 For a more complete description of SpheCow, we refer to the paper
 
 SpheCow: flexible dynamical models for galaxies and dark matter haloes
-Baes, Camps & Vandenbroucke (2021), submitted to A&A
+Baes, Camps & Vandenbroucke (2021), A&A, in press (arXiv:2105.11948)
+https://ui.adsabs.harvard.edu/abs/2021arXiv210511948B
 
 ## Installation
 
